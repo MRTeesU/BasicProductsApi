@@ -21,8 +21,22 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+async Task<List<Product>> GetAllProducts(ProductContext context) => await context.Products.ToListAsync();
+
 app.MapGet("/", () => "This is a test message");
 
 app.MapGet("/products", async (ProductContext context) => await context.Products.ToListAsync());
+
+app.MapGet("/products/{id}", async (ProductContext context, int id) =>
+    await context.Products.FindAsync(id) is Product product ?
+        Results.Ok(product) :
+        Results.NotFound("No product found"));
+
+app.MapPost("/product", async (ProductContext context, Product product) =>
+{
+    context.Products.Add(product);
+    await context.SaveChangesAsync();
+    return Results.Ok(await GetAllProducts(context));
+});
 
 app.Run();
