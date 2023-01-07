@@ -43,7 +43,7 @@ app.MapPut("/product/{id}", async (ProductContext context, Product product, int 
     var dbProduct = await context.Products.FindAsync(id);
     if (dbProduct == null) return Results.NotFound("No product found");
 
-    dbProduct.ProductId = product.ProductId;
+    //dbProduct.ProductId = product.ProductId;
     dbProduct.Name = product.Name;
     dbProduct.Description = product.Description;
     dbProduct.Price = product.Price;
