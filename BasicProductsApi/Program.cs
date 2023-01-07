@@ -38,5 +38,30 @@ app.MapPost("/product", async (ProductContext context, Product product) =>
     await context.SaveChangesAsync();
     return Results.Ok(await GetAllProducts(context));
 });
+app.MapPut("/product/{id}", async (ProductContext context, Product product, int id) =>
+{
+    var dbProduct = await context.Products.FindAsync(id);
+    if (dbProduct == null) return Results.NotFound("No product found");
+
+    dbProduct.ProductId = product.ProductId;
+    dbProduct.Name = product.Name;
+    dbProduct.Description = product.Description;
+    dbProduct.Price = product.Price;
+    dbProduct.InStock = product.InStock;
+    await context.SaveChangesAsync();
+
+    return Results.Ok(await GetAllProducts(context));
+});
+
+app.MapDelete("/product/{id}", async (ProductContext context, int id) =>
+{
+    var dbProduct = await context.Products.FindAsync(id);
+    if (dbProduct == null) return Results.NotFound("no");
+
+    context.Products.Remove(dbProduct);
+    await context.SaveChangesAsync();
+
+    return Results.Ok(await GetAllProducts(context));
+});
 
 app.Run();
