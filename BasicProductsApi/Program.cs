@@ -23,7 +23,7 @@ app.UseHttpsRedirection();
 
 async Task<List<Product>> GetAllProducts(ProductContext context) => await context.Products.ToListAsync();
 
-app.MapGet("/", () => "This is a test message 22");
+app.MapGet("/", () => "This is a test message 23");
 
 app.MapGet("/products", async (ProductContext context) => await context.Products.ToListAsync());
 
