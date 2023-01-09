@@ -89,10 +89,10 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
         with:
-          name: webapp
-          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-          #name: build
-          #path: ${{ env.PUBLISH_PATH }}
+          #name: webapp
+          #path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          name: build
+          path: ${{ env.PUBLISH_PATH }}
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
