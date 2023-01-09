@@ -4,7 +4,7 @@ env:
   DOTNET_VERSION: 6.0.x
   BUILD_CONFIGURATION: Release
   PROJECT_PATH: BasicProductsApi
-  PUBLISH_PATH: MSDeploy
+  PUBLISH_PATH: /subscriptions/816273e0-97c8-4f75-bdf2-3e8b325728bf/resourceGroups/BasicProductApiResourceGroup/providers/Microsoft.Web/sites/BasicProductsApi20230107153921
   TESTRESULTS_PATH: ./test-results
   AZURE_WEBAPP_NAME: BasicProductsApiapi
 jobs:
