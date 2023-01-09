@@ -1,7 +1,6 @@
 using BasicProductsApi;
 using Polly;
 using Polly.Extensions.Http;
-using Microsoft.Extensions.Http.Polly;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
